@@ -6,10 +6,12 @@ export const generateColorFromHash = (hash, start) => {
   return [r, g, b, a];
 };
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Identicon from "identicon.js";
 import { create } from "ipfs-http-client";
-import { generateHash } from "../utils";
+import { useActiveAccount } from "thirdweb/react";
+import { AppContext } from "@/contexts/AppContext";
+import { client } from "@/config/thirdwebClient";
 // //TODO
 // const client = create({
 //   host: "ipfs.openvino.org",
@@ -20,8 +22,8 @@ import { generateHash } from "../utils";
 //   },
 // });
 
-const projectId = process.env.NEXT_PROJECT_ID;
-const projectSecret = process.env.NEXT_API_KEY;
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
+const projectSecret = process.env.NEXT_PUBLIC_API_KEY;
 const auth =
   "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
 
@@ -35,39 +37,82 @@ const ipfs = create({
 });
 
 const CreateIdenticon = ({}) => {
+  const activeAccount = useActiveAccount();
 
   const [image, setImage] = useState(null);
 
-  const onChangeFile = async (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
+  const { setUri } = useContext(AppContext);
 
-  const [hash, setHash] = useState(
-    "3453e22133e1b6d3e14fcbb5348dff0842edd3676d503e79f4d8f2d900d2cd16"
-  );
+  function dataURLtoBlob(dataURL) {
+    const byteString = atob(dataURL.split(",")[1]);
+    const mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
+
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: mimeString });
+  }
+
+  const onChangeFile = async (e) => {
+    try {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        setImage(reader.result);
+  
+        // Forzar una actualización de la imagen en el canvas
+        setTimeout(async () => {
+          if (canvasRef.current) {
+            const dataURL = canvasRef.current.toDataURL();
+  
+            // Llamar a la función uploadToIpfs para subir la imagen al IPFS
+            const url = await uploadToIpfs(dataURL);
+            console.log("URL de IPFS:", url);
+  
+            const data = {
+              name: "test",
+              description: "test",
+              image: url,
+            };
+  
+            const fileUrl = await uploadFileToIpfs(data);
+  
+            // Asegurarse de que el URI se establece correctamente
+            setUri(fileUrl);
+            console.log("URI final:", fileUrl);
+          }
+        }, 100);
+      };
+      reader.readAsDataURL(file);
+    } catch (error) {
+      console.log("Error al cambiar el archivo:", error);
+    }
+  };
+  const uploadFileToIpfs = async (data) => {
+    try {
+      // Convertir el objeto JSON a una cadena
+      const jsonString = JSON.stringify(data);
+      const added = await ipfs.add(jsonString);
+      const url = `https://trazabilidadideal.infura-ipfs.io/ipfs/${added.path}`;
+      return url;
+    } catch (error) {
+      console.error("Error al subir el archivo a IPFS:", error);
+      return undefined;
+    }
+  };
+  
+  const [hash, setHash] = useState(activeAccount?.address);
   const [foregroundColor, setForegroundColor] = useState(
     generateColorFromHash(hash, 0)
   );
   const [backgroundColor, setBackgroundColor] = useState(
     generateColorFromHash(hash, 6)
   );
-
-
   const canvasRef = useRef(null);
-
-  const handleInputChange = async (e) => {
-    const inputValue = e.target.value;
-    const newHash = await generateHash(inputValue);
-    setHash(newHash);
-
-    setForegroundColor(generateColorFromHash(newHash, 0));
-    setBackgroundColor(generateColorFromHash(newHash, 6));
-  };
 
   const options = {
     foreground: foregroundColor,
@@ -76,14 +121,12 @@ const CreateIdenticon = ({}) => {
     size: 128,
     format: "svg",
   };
- 
 
   useEffect(() => {
     if (image && canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
 
-      // Cargar la imagen en el canvas
       const img = new Image();
       img.src = image;
       img.onload = () => {
@@ -97,58 +140,39 @@ const CreateIdenticon = ({}) => {
         identiconImg.src = `data:image/svg+xml;base64,${data}`;
         identiconImg.onload = () => {
           const size = Math.min(canvas.width, canvas.height) / 4; // Tamaño del Identicon
-          ctx.drawImage(
-            identiconImg,
-            canvas.width - size - 10, 
-            10,                      
-            size,                    
-            size                    
-          );
-          
+          ctx.drawImage(identiconImg, canvas.width - size - 10, 10, size, size);
         };
       };
     }
   }, [image, hash, options]);
 
-  const uploadToIpfs = async () => {
-    if (canvasRef.current) {
-      canvasRef.current.toBlob(async (blob) => {
-        try {
-          const added = await ipfs.add(blob);
-          const url = `https://trazabilidadideal.infura-ipfs.io/ipfs/${added.path}`;
-          console.log("Imagen subida a IPFS:", url);
-        } catch (error) {
-          console.error("Error subiendo a IPFS:", error);
-        }
-      }, "image/png");
+  const uploadToIpfs = async (dataURL) => {
+    try {
+      // Convertir la dataURL en un Blob
+      const blob = dataURLtoBlob(dataURL);
+
+      // Subir el Blob a IPFS
+      const added = await ipfs.add(blob);
+      const url = `https://trazabilidadideal.infura-ipfs.io/ipfs/${added.path}`;
+      console.log("URL:", url);
+      return url;
+    } catch (error) {
+      console.error("Error subiendo a IPFS:", error);
     }
   };
 
-  const data = new Identicon(hash, options).toString();
-  const identiconUrl = `data:image/svg+xml;base64,${data}`;
-
   return (
     <div>
-      {/* <p>{hash}</p> */}
       <canvas ref={canvasRef} style={{ display: "none" }} />
-      {/* <input
-        type="text"
-        onChange={handleInputChange}
-        placeholder="Enter a text"
-      /> */}
-      <input type="file" onChange={onChangeFile} />
-
+      <input
+        type="file"
+        onChange={onChangeFile}
+        accept="image/*;capture=camera"
+      />
       <div>
         {image && (
           <>
-            <p>Vista Previa:</p>
-            <img
-              src={canvasRef.current?.toDataURL()}
-              width={420}
-              height={420}
-              alt="Combined Image"
-            />
-      
+            <img src={image} width={420} height={420} alt="Combined Image" />
           </>
         )}
       </div>
