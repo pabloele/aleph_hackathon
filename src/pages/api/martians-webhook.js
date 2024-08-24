@@ -1,7 +1,6 @@
-import axios from "axios";
-
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const apiKey = process.env.NEXT_PUBLIC_EXT_API_KEY;
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
@@ -11,18 +10,26 @@ export default async function handler(req, res) {
     res.status(200).end();
     return;
   }
-  let response;
+
   try {
     const { eventType, eventData } = req.body;
 
     if (eventType === "presentation-request") {
-      response = await axios.put(
+      const response = await fetch(
         `${baseUrl}/credentialsbbs/waci/oob/presentation-proceed?apiKey=${apiKey}`,
         {
-          invitationId: eventData.invitationId,
-          verifiableCredentials: [eventData.credentialsToPresent[0].data],
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            invitationId: eventData.invitationId,
+            verifiableCredentials: [eventData.credentialsToPresent[0].data],
+          }),
         }
       );
+      const data = await response.json();
+      console.log("Response from API:", data);
     }
 
     console.log(
@@ -63,19 +70,33 @@ const martianOnboard = async (eventData) => {
         rawData: eventData,
       });
 
-      // const response = await axios.post(endpoint, {
-      //   invitationId: eventData.invitationId,
-      //   verified: eventData.verified,
-      //   rawData: eventData,
+      // const response = await fetch(endpoint, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     invitationId: eventData.invitationId,
+      //     verified: eventData.verified,
+      //     rawData: eventData,
+      //   }),
       // });
-      // console.log(response.data);
+      // const data = await response.json();
+      // console.log(data);
       return;
     }
 
     console.log("Onboarding the martian...");
-    // const onboardingResponse = await axios.post(endpoint, { state: "open" });
+    // const onboardingResponse = await fetch(endpoint, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ state: "open" }),
+    // });
+    // const data = await onboardingResponse.json();
     console.log("Martian onboarded!");
-    // console.log("Response: ", onboardingResponse.data);
+    // console.log("Response: ", data);
   } catch (error) {
     console.log("Error onboarding martian: ", error);
   }
