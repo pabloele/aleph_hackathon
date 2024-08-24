@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
 body {
-    font-family: 'futura-pt',sans-serif;
+  font-family: 'VT323',sans-serif !important;
 }
-
 label {
     display: block;
     margin-top: 10px;
@@ -59,7 +59,6 @@ label {
     border-radius: 50%;
   }
   body {
-    font-family: "futura-pt" !important;
     position: relative;
     margin: 0;
   }

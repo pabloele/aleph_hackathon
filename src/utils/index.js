@@ -14,3 +14,7 @@ export const generateRandomColor = () => {
   const a = 255; // opacidad completa
   return [r, g, b, a];
 };
+
+
+
+
