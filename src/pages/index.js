@@ -1,12 +1,15 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import CreateIdenticon from "@/components/CreateIdenticon";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export default function Home() {
   return (
-    <>
-      <h1>Hackathon</h1>
-    </>
+    <main
+      className={`flex min-h-screen flex-col items-center  p-24 `}>
+      <h1 className={`text-4xl mb-20`}>Welcome to openvino</h1>
+
+     {/* <CreateIdenticon /> */}
+    </main>
   );
 }
