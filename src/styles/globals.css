@@ -6,6 +6,7 @@
 
 body {
   font-family: 'VT323',sans-serif !important;
+  overflow-x: hidden;
 }
 label {
     display: block;

@@ -11,7 +11,6 @@ import Identicon from "identicon.js";
 import { create } from "ipfs-http-client";
 import { useActiveAccount } from "thirdweb/react";
 import { AppContext } from "@/contexts/AppContext";
-import { client } from "@/config/thirdwebClient";
 // //TODO
 // const client = create({
 //   host: "ipfs.openvino.org",
@@ -38,10 +37,8 @@ const ipfs = create({
 
 const CreateIdenticon = ({}) => {
   const activeAccount = useActiveAccount();
-
   const [image, setImage] = useState(null);
-
-  const { setUri } = useContext(AppContext);
+  const { setUri, name, setidenticonHash,setCCID } = useContext(AppContext);
 
   function dataURLtoBlob(dataURL) {
     const byteString = atob(dataURL.split(",")[1]);
@@ -63,26 +60,28 @@ const CreateIdenticon = ({}) => {
       const reader = new FileReader();
       reader.onloadend = async () => {
         setImage(reader.result);
-  
+
         // Forzar una actualización de la imagen en el canvas
         setTimeout(async () => {
           if (canvasRef.current) {
             const dataURL = canvasRef.current.toDataURL();
-  
             // Llamar a la función uploadToIpfs para subir la imagen al IPFS
-            const url = await uploadToIpfs(dataURL);
+            const url = (await uploadToIpfs(dataURL));
             console.log("URL de IPFS:", url);
-  
+
             const data = {
               name: "test",
-              description: "test",
-              image: url,
+              description: `${name}`,
+              image: url.url,
             };
-  
+
             const fileUrl = await uploadFileToIpfs(data);
-  
+
+            setCCID(url.path)
+
             // Asegurarse de que el URI se establece correctamente
             setUri(fileUrl);
+            setImage(url.url);
             console.log("URI final:", fileUrl);
           }
         }, 100);
@@ -104,8 +103,9 @@ const CreateIdenticon = ({}) => {
       return undefined;
     }
   };
-  
+
   const [hash, setHash] = useState(activeAccount?.address);
+  setidenticonHash(hash);
   const [foregroundColor, setForegroundColor] = useState(
     generateColorFromHash(hash, 0)
   );
@@ -155,7 +155,7 @@ const CreateIdenticon = ({}) => {
       const added = await ipfs.add(blob);
       const url = `https://trazabilidadideal.infura-ipfs.io/ipfs/${added.path}`;
       console.log("URL:", url);
-      return url;
+      return { url, path: added.path };
     } catch (error) {
       console.error("Error subiendo a IPFS:", error);
     }

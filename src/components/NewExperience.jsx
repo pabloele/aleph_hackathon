@@ -1,4 +1,4 @@
-import { act, useState, useContext } from "react";
+import { act, useState, useContext, useEffect } from "react";
 import CreateIdenticon from "./CreateIdenticon";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "@/config/thirdwebClient";
@@ -7,43 +7,60 @@ import { useActiveAccount } from "thirdweb/react";
 import { ethers5Adapter } from "thirdweb/adapters/ethers5";
 import { createInstance } from "@/eth/contracts/AlephContract";
 import { AppContext } from "@/contexts/AppContext";
+import { useRouter } from "next/navigation";
 const NewExperience = ({}) => {
+  const [redirect, setRedirect] = useState(null);
 
-  const {uri} = useContext(AppContext)
+  const { uri, setTokenId, setName, name, CCID } = useContext(AppContext);
 
+  useEffect(() => {
+    if (redirect) {
+      router.push(redirect);
+    }
+  }, [redirect]);
+
+  const router = useRouter();
 
   const mintNFT = async (e) => {
     e.preventDefault();
-  
+
     // Configura el proveedor con el adaptador de ethers.js
     const provider = ethers5Adapter.provider.toEthers({
       client,
       chain: zkSyncSepolia,
     });
-  
+
     // Configura el signer para firmar la transacción
     const signer = await ethers5Adapter.signer.toEthers({
       client,
       chain: zkSyncSepolia,
       account: activeAccount,
     });
-  
+
     // Crea la instancia del contrato con el signer
     const contract = createInstance(signer);
-  
-    console.log("Contrato:", contract);
-  
+
     try {
       // Ejecuta la función safeMint del contrato
       console.log(uri);
-      
-      const tx = await contract.safeMint(activeAccount?.address, uri);
+      const tx = await contract.safeMint(activeAccount?.address, uri, CCID);
       console.log("Transacción enviada:", tx.hash);
-  
+
       // Espera a que la transacción sea minada
       const receipt = await tx.wait();
-      console.log("Transacción confirmada:", receipt);
-  
+
+      if (receipt.blockNumber) {
+        setRedirect("/mars");
+      }
+
+      // El tokenId es el valor del contador antes de la última incrementación
+      const tokenId = await contract._tokenIdCounter();
+
+      if (tokenId === 0) {
+        setTokenId(0);
+      } else {
+        setTokenId(tokenId - 1);
+      }
     } catch (error) {
       console.error("Error al mintear el NFT:", error);
     }
@@ -54,7 +71,7 @@ const NewExperience = ({}) => {
     e.preventDefault();
   };
   return (
-    <form onSubmit={() => {}}>
+    <form onSubmit={() => {}} style={{ height: "100vh" }}>
       {activeAccount?.address && (
         <div className="form-group center text-right pr-10 pt-2 ">
           <ConnectButton
@@ -87,42 +104,21 @@ const NewExperience = ({}) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">
-                  Are you drinking this wine with food? What are you eating
-                </label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  name="answer3"
-                  style={{ resize: "none" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">
-                  Do you like this wine? How would you rank it?
-                </label>
-                <textarea
-                  type="text"
-                  className="form-control"
-                  name="answer4"
-                  style={{ resize: "none" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">
-                  Do you think we should build a colony on Mars?
+                <label htmlFor="email" className="text-xl">
+                  Make a grafitti
                 </label>
                 <textarea
                   type="text"
                   className="form-control"
                   name="answer5"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   style={{ resize: "none" }}
                 />
               </div>
 
               <div className="form-group">
                 <button
-             
                   className="btn btn-lg btn-primary btn-block"
                   onClick={mintNFT}
                 >
