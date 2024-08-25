@@ -1,0 +1,14 @@
+{
+  "invitations": [
+    {
+      "invitationId": "8dbc53eb-1fa5-4380-a592-331ef12c49e7",
+      "walletID": "0xBb0ca8274f94fa38c8ebEdAE6944B9Fa4A347784",
+      "status": "pending"
+    },
+    {
+      "invitationId": "174f025b-af16-4e2a-a631-146fc32a6e61",
+      "walletID": "0xBb0ca8274f94fa38c8ebEdAE6944B9Fa4A347784",
+      "status": "pending"
+    }
+  ]
+}

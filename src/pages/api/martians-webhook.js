@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const apiKey = process.env.NEXT_PUBLIC_EXT_API_KEY;
 
@@ -42,7 +44,7 @@ export default async function handler(req, res) {
       console.log("Not Verified :(");
       return;
     } else {
-      martianOnboard(eventData);
+      await martianOnboard(eventData);
 
       res.status(200).json("Flujo completado");
     }
@@ -70,34 +72,26 @@ const martianOnboard = async (eventData) => {
         rawData: eventData,
       });
 
-      // const response = await fetch(endpoint, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
+      const addressResponse = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/getAddress?invitationId=${eventData.invitationId}`
+      );
+      console.log("addressResponse", addressResponse);
+
+      // const response = await axios.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/saveInvitation`,
+      //   {
       //     invitationId: eventData.invitationId,
-      //     verified: eventData.verified,
-      //     rawData: eventData,
-      //   }),
-      // });
-      // const data = await response.json();
-      // console.log(data);
+      //     walletID: addressResponse.data.walletID,
+      //     status: "allowed",
+      //   }
+      // );
+
+      // console.log("Invitation updated:", response.data);
       return;
     }
 
-    console.log("Onboarding the martian...");
-    // const onboardingResponse = await fetch(endpoint, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ state: "open" }),
-    // });
-    // const data = await onboardingResponse.json();
     console.log("Martian onboarded!");
-    // console.log("Response: ", data);
   } catch (error) {
-    console.log("Error onboarding martian: ", error);
+    console.log("Error onboarding martian: ", error.message);
   }
 };

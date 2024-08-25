@@ -1,0 +1,692 @@
+[
+  {
+    "wx_batterylow": 0,
+    "avewindspeed": 3.78,
+    "gustwindspeed": 5.4,
+    "winddirection": 167,
+    "cumulativerain": 54,
+    "temperature": 829,
+    "humidity": 59,
+    "light": 0,
+    "uv": 0
+  },
+  {
+    "wx_batterylow": 0,
+    "avewindspeed": 4.32,
+    "gustwindspeed": 5.4,
+    "winddirection": 138,
+    "cumulativerain": 54,
+    "temperature": 829,
+    "humidity": 59,
+    "light": 0,
+    "uv": 0
+  },
+  {
+    "date": 1724549884264,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724549975437,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 108,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724549984034,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724549991159,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550060024,
+    "body": {
+      "vinduino_id": "IORG1AH0DC1B56LL",
+      "0.05m": 23,
+      "0.5m": 255,
+      "1m": 141,
+      "2m": 203,
+      "vin_bat": 4.17,
+      "vin_temp": 7.63
+    }
+  },
+  {
+    "date": 1724550106386,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.62,
+      "gustwindspeed": 1.62,
+      "winddirection": 124,
+      "cumulativerain": 54,
+      "temperature": 809,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550106888,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.62,
+      "gustwindspeed": 1.62,
+      "winddirection": 124,
+      "cumulativerain": 54,
+      "temperature": 809,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550107282,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 115,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550107689,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 122,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550368812,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 122,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550369239,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 120,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724550370653,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 112,
+      "cumulativerain": 54,
+      "temperature": 808,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724551566225,
+    "body": {
+      "vinduino_id": "V55XYQX29JTFWNVR",
+      "0.05m": 255,
+      "0.5m": 215,
+      "1m": 255,
+      "2m": 14,
+      "vin_bat": 3.88,
+      "vin_temp": -127
+    }
+  },
+  {
+    "date": 1724551568668,
+    "body": {
+      "vinduino_id": "XBA5TPH2RV65Q52K",
+      "0.05m": 24,
+      "0.5m": 19,
+      "1m": 255,
+      "2m": 13,
+      "vin_bat": 4.04,
+      "vin_temp": -127
+    }
+  },
+  {
+    "date": 1724551681864,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 99,
+      "cumulativerain": 54,
+      "temperature": 807,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724551682318,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 99,
+      "cumulativerain": 54,
+      "temperature": 807,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724551815174,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 115,
+      "cumulativerain": 54,
+      "temperature": 807,
+      "humidity": 63,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724552765023,
+    "body": {
+      "vinduino_id": "IORG1AH0DC1B56LL",
+      "0.05m": 23,
+      "0.5m": 255,
+      "1m": 141,
+      "2m": 205,
+      "vin_bat": 4.17,
+      "vin_temp": 7.5
+    }
+  },
+  {
+    "date": 1724552882063,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.62,
+      "gustwindspeed": 3.78,
+      "winddirection": 156,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724552882484,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.62,
+      "gustwindspeed": 3.78,
+      "winddirection": 156,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553615485,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553656281,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553669469,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 163,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553669890,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.16,
+      "gustwindspeed": 3.78,
+      "winddirection": 163,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553686580,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724553888244,
+    "body": {
+      "vinduino_id": "XBA5TPH2RV65Q52K",
+      "0.05m": 24,
+      "0.5m": 19,
+      "1m": 255,
+      "2m": 13,
+      "vin_bat": 4.04,
+      "vin_temp": -127
+    }
+  },
+  {
+    "date": 1724553930666,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 2.7,
+      "gustwindspeed": 3.78,
+      "winddirection": 189,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554018856,
+    "body": {
+      "vinduino_id": "IORG1AH0DC1B56LL",
+      "0.05m": 23,
+      "0.5m": 255,
+      "1m": 141,
+      "2m": 206,
+      "vin_bat": 4.16,
+      "vin_temp": 7.44
+    }
+  },
+  {
+    "date": 1724554063848,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 175,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554175270,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554249417,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554280840,
+    "body": {
+      "vinduino_id": "V55XYQX29JTFWNVR",
+      "0.05m": 255,
+      "0.5m": 215,
+      "1m": 255,
+      "2m": 14,
+      "vin_bat": 3.88,
+      "vin_temp": -127
+    }
+  },
+  {
+    "date": 1724554325858,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 175,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554326367,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 151,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554326798,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.24,
+      "gustwindspeed": 3.78,
+      "winddirection": 210,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554411867,
+    "body": {
+      "vinduino_id": "XBA5TPH2RV65Q52K",
+      "0.05m": 24,
+      "0.5m": 19,
+      "1m": 255,
+      "2m": 13,
+      "vin_bat": 4.04,
+      "vin_temp": -127
+    }
+  },
+  {
+    "date": 1724554431278,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554456965,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.24,
+      "gustwindspeed": 3.78,
+      "winddirection": 210,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554457523,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 151,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554457960,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 132,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554511430,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554565351,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554695374,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554821497,
+    "body": {
+      "vinduino_id": "IORG1AH0DC1B56LL",
+      "0.05m": 23,
+      "0.5m": 255,
+      "1m": 141,
+      "2m": 206,
+      "vin_bat": 4.13,
+      "vin_temp": 7.44
+    }
+  },
+  {
+    "date": 1724554850120,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 3.78,
+      "gustwindspeed": 5.4,
+      "winddirection": 132,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554852548,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.62,
+      "gustwindspeed": 1.62,
+      "winddirection": 128,
+      "cumulativerain": 54,
+      "temperature": 788,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724554854015,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 1.08,
+      "gustwindspeed": 1.62,
+      "winddirection": 148,
+      "cumulativerain": 54,
+      "temperature": 787,
+      "humidity": 65,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724555020325,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  },
+  {
+    "date": 1724560459283,
+    "body": {
+      "wx_batterylow": 0,
+      "avewindspeed": 4.32,
+      "gustwindspeed": 5.4,
+      "winddirection": 138,
+      "cumulativerain": 54,
+      "temperature": 829,
+      "humidity": 59,
+      "light": 0,
+      "uv": 0
+    }
+  }
+]

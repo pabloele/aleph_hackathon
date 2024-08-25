@@ -11,16 +11,19 @@
   "dependencies": {
     "axios": "^1.7.5",
     "bootstrap": "^4.4.1",
-    "ethers": "5.7.2",
+    "ethers": "^5.7.2",
     "ipfs-http-client": "^60.0.1",
-    "next": "14.2.6",
+    "next": "^14.2.6",
     "react": "^18",
     "react-dom": "^18",
-    "thirdweb": "^5"
+    "thirdweb": "^5",
+    "zksync-ethers": "^5.9.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
     "babel-preset-next": "^1.4.0",
-    "eslint": "^8",
+    "eslint": "^9.9.1",
     "eslint-config-next": "14.2.6",
     "identicon.js": "^2.3.3",
     "postcss": "^8",
